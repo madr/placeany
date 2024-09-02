@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>placeany bookmarklet</title>
+  <style>
+    body {
+      width: 900px;
+      margin: 100px auto;
+    }
+
+    img {
+      display: block;
+    }
+
+    .line {
+      overflow: hidden;
+    }
+
+    .unit {
+      float: left;
+      width: 50%;
+      padding-bottom: 10px;
+    }
+
+    footer {
+      font-size: small;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div role="main" class="line">
+    <div class="unit">
+      <h1>placeany bookmarklet</h1>
+      <p>A bookmarklet which add your flavor of choice to any website by replacing images with placeholder images from
+        this <a href="/">placeany</a> instance.</p>
+      <ul>
+        <li><a
+            href="{% raw %}javascript:/*jslint%20indent:%202,%20browser:%20true%20*/var%20madrHoldr%20=%20function%20()%20{%22use%20strict%22;var%20images,%20max,%20i,%20src,%20img,theme%20=%20%22{% endraw %}{{ theme }}{% raw %}%22,url%20=%20%22http://{% endraw %}{{ url }}{% raw %}%22;images%20=%20document.getElementsByTagName(%22img%22);for%20(i%20=%200,max%20=%20images.length;i%3Cmax;i++)%20{if%20(images[i].width)%20{img%20=%20images[i];src%20=%20img.width%20+%20%22/%22%20+%20img.height;src%20=%20url%20+%20%22/%22%20+%20src;img.src%20=%20src;}}};madrHoldr();{% endraw %}">placeanyize!</a>
+        </li>
+      </ul>
+    </div>
+    <div class="unit">
+      <h2>Instructions</h2>
+      <ol>
+        <li>Drag bookmarklet to your bookmarks bar. <br><small>(You may need to go to your browser's view menu and make
+            sure the
+            Bookmarks toolbar is displayed.)</small></li>
+        <li>Navigate to any website. <br><small>(The more images, the better.)</small></li>
+        <li>Click the bookmark.</li>
+      </ol>
+    </div>
+  </div>
+  <hr>
+  <footer role="contentinfo">
+    Also available as a <a href="/">Placeholder Service</a>.<br>
+    Source on <a href="https://github.com/madr/placeany">GitHub</a>.
+  </footer>
+</body>
+
+</html>

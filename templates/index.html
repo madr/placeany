@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>placeany</title>
+  <style>
+    body {
+      width: 900px;
+      margin: 100px auto;
+    }
+
+    img {
+      display: block;
+    }
+
+    .line {
+      overflow: hidden;
+    }
+
+    .unit {
+      float: left;
+      width: 50%;
+      padding-bottom: 10px;
+    }
+
+    footer {
+      font-size: small;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div role="main" class="line">
+    <article class="unit">
+      <h1>placeany</h1>
+      <p>A quick and simple service for getting pictures for use as placeholders in your designs or code.
+        Just put your image size (width &amp; height) after our URL and you'll get a placeholder.</p>
+      <pre><output>Examples:
+          <a href="/200/300">{{ url }}/200/300</a>
+          <a href="/g/200/300">{{ url }}/g/200/300</a>
+        </output></pre>
+    </article>
+    <div class="unit">
+      <img src="/450/230" alt="">
+    </div>
+  </div>
+  <div class="line">
+    <div class="unit">
+      <img src="440/440" alt="">
+    </div>
+    <div class="unit">
+      <div class="unit">
+        <img src="215/175" alt="">
+      </div>
+      <div class="unit">
+        <img src="225/175" alt="">
+      </div>
+      <img src="450/255" alt="">
+    </div>
+  </div>
+  <hr>
+  <footer role="contentinfo">
+    Also available as a <a href="/bookmarklet">Bookmarklet Service</a>.<br>
+    Source on <a href="https://github.com/madr/placeany">GitHub</a>.
+  </footer>
+</body>
+
+</html>
