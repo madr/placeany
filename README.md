@@ -4,10 +4,10 @@ A quick and simple service for getting pictures of whatever-you-want
 for use as placeholders in your designs or code. Just put your image
 size (width & height) after the URL and you'll get a placeholder.
 
-Similar URL API as [Placekitten](http://placekitten.com).
+Similar URL API as [Placekitten]([http://placekitten.com](https://web.archive.org/web/20110504042732/http://placekitten.com/)).
 
 There is also a bookmarklet service which works the same as
-[Horse_ebookmarklet](http://www.heyben.com/horse_ebookmarklet/).
+[Horse_ebookmarklet]([http://www.heyben.com/horse_ebookmarklet/](https://web.archive.org/web/20120223050454/http://www.heyben.com/horse_ebookmarklet/)).
 
 ## Installation
 
