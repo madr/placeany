@@ -1,4 +1,4 @@
-# What is this?
+# Placeany
 
 A quick and simple service for getting pictures of whatever-you-want
 for use as placeholders in your designs or code. Just put your image
@@ -11,17 +11,19 @@ There is also a bookmarklet service which works the same as
 
 ## Installation
 
-For local development builds, not suitable for production:
+First, create an image collection.
 
-1. Go to the code: `cd path/to/holder`
+1. Create the directory `./images`.
+1. Get some images, from [Unsplash](https://unsplash.com) or similar.
+1. Place images in image directory.
+
+### Run as local web server
+
+1. Go to the code: `cd path/to/holder`. Copy `images` folder to it.
 1. Create and activate a virtualenv.
 1. Get dependencies in place: `pip install -r requirements.txt`
-1. Set up a collection of images.
-   a. Create the directory `./images`.
-   b. Get some images, from [Unsplash](https://unsplash.com) or similar.
-   c. Place images in image directory.
-1. Start the app: `flask run .`
-1. Go to [http://localhost:5000](http://localhost:5000) in your web browser.
+1. Start the app: `waitress-serve --host 127.0.0.1 --port 5099 wsgi:app`
+1. Go to [http://localhost:5099](http://localhost:5099) in your web browser.
 1. Done!
 
 ### Run as Container
