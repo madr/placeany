@@ -13,11 +13,11 @@ Inspirations:
 
 ## Example calls
 
-    # generates an image, 200px wide and 300px tall
-    http://localhost:8080/200/300*
+Generates an image, 200px wide and 300px tall:  
+http://localhost:8080/200/300
 
-    # generates an image in grayscale, 200px wide and 300px tall
-    http://localhost:8080/g/200/300
+Generates an image in grayscale, 200px wide and 300px tall:  
+http://localhost:8080/g/200/300
 
 ## Installation
 
