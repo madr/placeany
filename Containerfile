@@ -12,5 +12,5 @@ COPY wsgi.py wsgi.py
 
 VOLUME images
 
-ENTRYPOINT waitress-serve --host 127.0.0.1 --port 5099 wsgi:app
+ENTRYPOINT waitress-serve wsgi:app
 

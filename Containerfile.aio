@@ -14,5 +14,5 @@ FROM app AS imgs
 ARG images
 copy ${images} images
 
-ENTRYPOINT waitress-serve --host 127.0.0.1 --port 5099 wsgi:app
+ENTRYPOINT waitress-serve wsgi:app
 
