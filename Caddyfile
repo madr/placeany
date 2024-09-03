@@ -1,4 +1,4 @@
 placeany.site {
-	encode zstd gzip
+    encode zstd gzip
     reverse_proxy http://localhost:5099
 }
