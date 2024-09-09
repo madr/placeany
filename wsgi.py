@@ -30,7 +30,7 @@ def get_cropped_image(x, y, grey=False, retries=0):
     im = ImageOps.fit(im, (x, y))
     if grey:
         im = ImageOps.grayscale(im)
-    im.save(out, "WEBP", quality=50)
+    im.save(out, "WEBP", quality=80)
     out.seek(0)
     return out
 
