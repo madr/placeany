@@ -39,8 +39,7 @@ First, create an image collection.
 ### Run as Container
 
 The most easy and portable way to use this is to use Docker or Podman.
-In this build, waitress is used for production readyness. Port 5099 is
-instead used.
+In this build, waitress is used for production readyness.
 
     podman build .
     podman run -it -p 8080:8080 -v ./images:/app/images <container id>
