@@ -55,13 +55,13 @@ def bookmarklet():
 
 
 @app.route("/<int:x>/<int:y>")
-@cache.cached(10)
+@cache.cached(1)
 def generate(x, y):
     return make_response(x, y, COLOR)
 
 
 @app.route("/g/<int:x>/<int:y>")
-@cache.cached(10)
+@cache.cached(1)
 def generate_grey(x, y):
     return make_response(x, y, GREY)
 
