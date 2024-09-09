@@ -2,7 +2,7 @@ import os
 import random
 from io import BytesIO
 
-from flask import Flask, render_template, request, send_file
+from flask import Flask, Response, render_template, request, send_file
 from flask_caching import Cache
 from PIL import Image, ImageOps
 
@@ -17,14 +17,16 @@ app = Flask(__name__)
 cache.init_app(app)
 
 
-def get_cropped_image(x, y, grey=False):
+def get_cropped_image(x, y, grey=False, retries=0):
     """crops a random image from collection"""
+    if retries > 10:
+        return None
     im_src = random.choice(os.listdir("./images"))
     im = Image.open(f"images/{im_src}")
     out = BytesIO()
     max_x, max_y = im.size
-    if x < max_x and y < max_y:
-        return get_cropped_image(x, y, grey)
+    if x > max_x and y > max_y:
+        return get_cropped_image(x, y, grey, retries + 1)
     im = ImageOps.fit(im, (x, y))
     if grey:
         im = ImageOps.grayscale(im)
@@ -35,6 +37,8 @@ def get_cropped_image(x, y, grey=False):
 
 def make_response(x, y, color_mode=COLOR):
     im = get_cropped_image(x, y, color_mode == GREY)
+    if not im:
+        return Response(status=401)
     return send_file(im, mimetype="image/webp")
 
 
