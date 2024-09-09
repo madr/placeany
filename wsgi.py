@@ -2,7 +2,7 @@ import os
 import random
 from io import BytesIO
 
-from flask import Flask, render_template, request, send_file
+from flask import Flask, Response, render_template, request, send_file
 from flask_caching import Cache
 from PIL import Image, ImageOps
 
@@ -17,23 +17,28 @@ app = Flask(__name__)
 cache.init_app(app)
 
 
-def get_cropped_image(x, y, grey=False):
+def get_cropped_image(x, y, grey=False, retries=0):
     """crops a random image from collection"""
+    if retries > 10:
+        return None
     im_src = random.choice(os.listdir("./images"))
     im = Image.open(f"images/{im_src}")
     out = BytesIO()
     max_x, max_y = im.size
-    if x < max_x or y < max_y:
-        im = ImageOps.fit(im, (x, y))
+    if x > max_x and y > max_y:
+        return get_cropped_image(x, y, grey, retries + 1)
+    im = ImageOps.fit(im, (x, y))
     if grey:
         im = ImageOps.grayscale(im)
-    im.save(out, "WEBP", quality=50)
+    im.save(out, "WEBP", quality=80)
     out.seek(0)
     return out
 
 
 def make_response(x, y, color_mode=COLOR):
     im = get_cropped_image(x, y, color_mode == GREY)
+    if not im:
+        return Response(status=401)
     return send_file(im, mimetype="image/webp")
 
 
@@ -50,13 +55,13 @@ def bookmarklet():
 
 
 @app.route("/<int:x>/<int:y>")
-@cache.cached(10)
+@cache.cached(1)
 def generate(x, y):
     return make_response(x, y, COLOR)
 
 
 @app.route("/g/<int:x>/<int:y>")
-@cache.cached(10)
+@cache.cached(1)
 def generate_grey(x, y):
     return make_response(x, y, GREY)
 
