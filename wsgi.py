@@ -23,8 +23,9 @@ def get_cropped_image(x, y, grey=False):
     im = Image.open(f"images/{im_src}")
     out = BytesIO()
     max_x, max_y = im.size
-    if x < max_x or y < max_y:
-        im = ImageOps.fit(im, (x, y))
+    if x < max_x and y < max_y:
+        return get_cropped_image(x, y, grey)
+    im = ImageOps.fit(im, (x, y))
     if grey:
         im = ImageOps.grayscale(im)
     im.save(out, "WEBP", quality=50)
