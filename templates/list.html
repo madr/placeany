@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>placeany</title>
+  <style>
+    body {
+      width: 900px;
+      margin: 100px auto;
+    }
+
+    img {
+      display: block;
+    }
+
+    .grid {
+      display: flex;
+      gap: 1em;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>placeany</h1>
+    <p>The following images are used on this placeany instance.
+      You may request a specific image by adding <b>?image=n</b> to your request
+      (where <b>n</b> is the number of the image you want), or filter the options
+      by adding multiple values like this: <b>?image=n1x&amp;image=n2&amp;image=n3</b>.</p>
+    <div class="grid">
+      {% for n in range(count) %}
+      <div class="unit">
+        <img src="/125/125?image={{ n }}" alt="">
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+  <hr>
+  <footer role="contentinfo">
+    Also available as a <a href="/bookmarklet">Bookmarklet Service</a>.<br>
+    Source on <a href="https://github.com/madr/placeany">GitHub</a>.
+  </footer>
+</body>
+
+</html>
