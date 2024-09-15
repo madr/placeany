@@ -21,7 +21,23 @@ def get_cropped_image(x, y, grey=False, retries=0):
     """crops a random image from collection"""
     if retries > 10:
         return None
-    im_src = random.choice(os.listdir("./images"))
+    options = os.listdir("./images")
+    try:
+        selection = list(
+            filter(
+                lambda i: i in range(0, len(options)),
+                map(int, request.args.getlist("image")),
+            )
+        )
+    except ValueError:
+        return None
+    match len(selection):
+        case 0:
+            im_src = random.choice(options)
+        case 1:
+            im_src = options[selection[0]]
+        case _:
+            im_src = options[random.choice(selection)]
     im = Image.open(f"images/{im_src}")
     out = BytesIO()
     max_x, max_y = im.size
