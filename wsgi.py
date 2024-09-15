@@ -72,6 +72,12 @@ def bookmarklet():
     return render_template("bookmarklet.html", url=u)
 
 
+@app.route("/images")
+def collection():
+    c = len(os.listdir(IMAGE_DIR))
+    return render_template("list.html", count=c)
+
+
 @app.route("/<int:x>/<int:y>")
 def generate(x, y):
     return make_response(x, y, request.args.getlist("image"), COLOR)
